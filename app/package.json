@@ -1,0 +1,7 @@
+{
+  "name": "klimatyzacja-gui",
+  "version": "1",
+  "main": "main.js",
+  "private": true,
+  "dependencies": {}
+}
