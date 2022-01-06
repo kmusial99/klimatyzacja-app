@@ -1,10 +1,9 @@
 <div class="container">
-  <h1 class="title">
-    {{ 'PAGES.HOME.TITLE' | translate }}
-  </h1>
+  <div *ngFor="let urzadzenie of urzadzenia" style="margin-top: 3%;margin-left: 5%">
+    <p-inputSwitch [(ngModel)]="urzadzenie.wlaczone"></p-inputSwitch>
+        <div class="myClass">Firstname</div>
+  </div>
 
-  <p-knob ngModel="12"></p-knob>
 
-  <a routerLink="/detail">{{ 'PAGES.HOME.GO_TO_DETAIL' | translate }}</a>
-  <a routerLink="/dashboard">{{ 'Dashboard' | translate }}</a>
+
 </div>

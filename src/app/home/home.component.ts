@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { Urzadzenie } from '../models/urzadzenie';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +10,26 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  urzadzenia: Urzadzenie[];
+  checked = false;
 
-  ngOnInit(): void {
-    console.log('HomeComponent INIT');
+  constructor() {
   }
 
+  ngOnInit(): void {
+    this.urzadzenia = [
+      {
+        id: 1,
+        nazwa: 'sypialnia',
+        wlaczone: false,
+        temperatura: 20
+      },
+      {
+        id: 2,
+        nazwa: 'salon',
+        wlaczone: true,
+        temperatura: 15
+      }
+    ];
+  }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ElectronService } from './core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { APP_CONFIG } from '../environments/environment';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,16 @@ import { APP_CONFIG } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  visibleSidebar2;
+
   constructor(
+    private primengConfig: PrimeNGConfig,
     private electronService: ElectronService,
     private translate: TranslateService
   ) {
+    this.primengConfig.ripple = true;
+
     this.translate.setDefaultLang('en');
     console.log('APP_CONFIG', APP_CONFIG);
 
