@@ -9,6 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { ButtonModule } from 'primeng/button';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -19,7 +21,10 @@ import { InputSwitchModule } from 'primeng/inputswitch';
     KnobModule,
     SelectButtonModule,
     CheckboxModule,
-    InputSwitchModule]
+    InputSwitchModule,
+    ButtonModule,
+    ToggleButtonModule
+  ]
 })
 export class HomeModule {
 }

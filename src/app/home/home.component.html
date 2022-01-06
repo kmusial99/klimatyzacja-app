@@ -1,9 +1,18 @@
 <div class="container">
   <div *ngFor="let urzadzenie of urzadzenia" style="margin-top: 3%;margin-left: 5%">
-    <p-inputSwitch [(ngModel)]="urzadzenie.wlaczone"></p-inputSwitch>
-        <div class="myClass">Firstname</div>
+    <p-toggleButton [(ngModel)]="urzadzenie.wlaczone"
+                    onLabel="On"
+                    offLabel="Off"
+                    onIcon="pi pi-check"
+                    offIcon="pi pi-times"
+                    [style]="{'width': '5em'}">
+
+    </p-toggleButton>
+    <button pButton
+            [style]="{ left: '2%' }"
+            class="p-button-outlined p-button-lg"
+            (click)="onClick()">
+      {{ urzadzenie.nazwa }}
+    </button>
   </div>
-
-
-
 </div>
