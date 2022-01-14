@@ -14,10 +14,11 @@ import { HomeModule } from './home/home.module';
 import { AddDeviceModule } from './add-device/add-device.module';
 
 import { AppComponent } from './app.component';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { DeviceModule } from './device/device.module';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
+import { UrzadzenieService } from './service/urzadzenieService';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -31,7 +32,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     SharedModule,
     HomeModule,
     AddDeviceModule,
-    DashboardModule,
+    DeviceModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,
@@ -45,7 +46,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
       }
     })
   ],
-  providers: [],
+  providers: [UrzadzenieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

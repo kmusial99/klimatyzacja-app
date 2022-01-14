@@ -1,39 +1,19 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { Urzadzenie } from '../models/urzadzenie';
-import { PrimeNGConfig } from 'primeng/api';
+import { Router } from '@angular/router';
+import { UrzadzenieService } from '../service/urzadzenieService';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   urzadzenia: Urzadzenie[];
-  checked = false;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-    this.urzadzenia = [
-      {
-        id: 1,
-        nazwa: 'sypialnia',
-        wlaczone: false,
-        temperatura: 20
-      },
-      {
-        id: 2,
-        nazwa: 'salon',
-        wlaczone: true,
-        temperatura: 15
-      }
-    ];
-  }
-
-  onClick(): void {
-
+  constructor(private router: Router,
+              private urzadzenieService: UrzadzenieService) {
+    this.urzadzenia = this.urzadzenieService.getUrzadzenia();
   }
 }

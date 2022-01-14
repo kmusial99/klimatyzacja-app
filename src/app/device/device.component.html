@@ -1,0 +1,44 @@
+<h3 class="p-m-3">Device Details</h3>
+
+<div class="p-grid p-fluid p-col-9">
+  <p-toggleButton [(ngModel)]="deviceToUpdate.wlaczone"
+                  onLabel="On"
+                  offLabel="Off"
+                  onIcon="pi pi-check"
+                  offIcon="pi pi-times"
+                  [style]="{'width': '5em'}"
+  class="p-mx-5 p-my-auto">
+
+  </p-toggleButton>
+  <div class="p-col-3">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+      <input type="text" pInputText placeholder="Nazwa urządzenia" [(ngModel)]="deviceToUpdate.nazwa">
+    </div>
+  </div>
+
+
+  <div [style]="{'width': '7em'}" class="p-my-auto">
+    <div class="p-inputgroup">
+      <input type="text" pInputText placeholder="Temperatura" [(ngModel)]="deviceToUpdate.temperatura">
+      <span class="p-inputgroup-addon">°C</span>
+    </div>
+  </div>
+</div>
+
+<div class="p-mt-3">
+  <button pButton
+          [style]="{ left: '2%' }"
+          (click)="save()"
+          class="p-button-outlined p-button-lg p-mr-3">
+    Zapisz
+  </button>
+
+
+  <button pButton
+          [style]="{ left: '2%' }"
+          (click)="onBack()"
+          class="p-button-outlined p-button-lg">
+    Anuluj
+  </button>
+</div>

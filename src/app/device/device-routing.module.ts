@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
+import { DeviceComponent } from './device.component';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
-    component: DashboardComponent
+    path: 'device/:id',
+    component: DeviceComponent
   }
 ];
 
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule {}
+export class DeviceRoutingModule {}

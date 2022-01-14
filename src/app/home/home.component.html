@@ -9,9 +9,9 @@
 
     </p-toggleButton>
     <button pButton
+            [routerLink]="['/device', urzadzenie.id]"
             [style]="{ left: '2%' }"
-            class="p-button-outlined p-button-lg"
-            (click)="onClick()">
+            class="p-button-outlined p-button-lg">
       {{ urzadzenie.nazwa }}
     </button>
   </div>

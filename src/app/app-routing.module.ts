@@ -4,7 +4,7 @@ import { PageNotFoundComponent } from './shared/components';
 
 import { HomeRoutingModule } from './home/home-routing.module';
 import { AddDeviceRoutingModule } from './add-device/add-device-routing.module';
-import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
+import { DeviceRoutingModule } from './device/device-routing.module';
 
 const routes: Routes = [
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     HomeRoutingModule,
     AddDeviceRoutingModule,
-    DashboardRoutingModule
+    DeviceRoutingModule
   ],
   exports: [RouterModule]
 })
