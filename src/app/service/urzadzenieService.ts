@@ -2,9 +2,9 @@ import { Urzadzenie } from '../models/urzadzenie';
 
 export class UrzadzenieService {
   private urzadzenia = [
-    new Urzadzenie(1, 'Sypialnia', false, 20),
-    new Urzadzenie(2, 'Sypialnia 2', true, 23),
-    new Urzadzenie(3, 'Salon', true, 15)
+    new Urzadzenie(1, 'Sypialnia', false, 20, false, new Date()),
+    new Urzadzenie(2, 'Sypialnia 2', true, 23, false, new Date()),
+    new Urzadzenie(3, 'Salon', true, 15, false, new Date())
   ];
 
   public getUrzadzenia() {

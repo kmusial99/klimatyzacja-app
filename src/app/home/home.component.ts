@@ -16,4 +16,11 @@ export class HomeComponent {
               private urzadzenieService: UrzadzenieService) {
     this.urzadzenia = this.urzadzenieService.getUrzadzenia();
   }
+
+  onDeviceChange(urzadzenie: Urzadzenie) {
+    if (urzadzenie.wlaczone) {
+      urzadzenie.czyZaplanowaneWlaczenie = false;
+      urzadzenie.dataPlanowanegoWlaczenia = new Date();
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {KnobModule} from 'primeng/knob';
+import { KnobModule } from 'primeng/knob';
 
 
 import { SharedModule } from '../shared/shared.module';
@@ -10,9 +10,25 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { SliderModule } from 'primeng/slider';
+import { CalendarModule } from 'primeng/calendar';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [DeviceComponent],
-  imports: [CommonModule, SharedModule, DeviceRoutingModule, KnobModule, InputNumberModule, InputTextModule, ButtonModule, ToggleButtonModule]
+  imports: [
+    CommonModule,
+    SharedModule,
+    DeviceRoutingModule,
+    KnobModule,
+    InputNumberModule,
+    InputTextModule,
+    ButtonModule,
+    ToggleButtonModule,
+    SliderModule,
+    CalendarModule,
+    MessagesModule
+  ]
 })
-export class DeviceModule {}
+export class DeviceModule {
+}
