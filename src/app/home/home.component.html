@@ -13,9 +13,8 @@
             [style]="{ left: '2%' }"
             class="p-button-outlined p-button-lg">
       {{ urzadzenie.nazwa }}
-      <p *ngIf="urzadzenie.czyZaplanowaneWlaczenie">
-        &nbsp;<i class="pi pi-clock"></i>
-      </p>
+        &nbsp;
+      <i *ngIf="urzadzenie.czyZaplanowaneWlaczenie" class="pi pi-clock"></i>
     </button>
   </div>
 </div>

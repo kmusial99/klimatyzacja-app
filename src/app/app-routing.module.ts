@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/components';
 
 import { HomeRoutingModule } from './home/home-routing.module';
-import { AddDeviceRoutingModule } from './add-device/add-device-routing.module';
 import { DeviceRoutingModule } from './device/device-routing.module';
+import { AddDeviceModule } from './add-device/add-device.module';
 
 const routes: Routes = [
   {
@@ -22,7 +22,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     HomeRoutingModule,
-    AddDeviceRoutingModule,
+    AddDeviceModule,
     DeviceRoutingModule
   ],
   exports: [RouterModule]

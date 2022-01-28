@@ -13,6 +13,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { SliderModule } from 'primeng/slider';
 import { CalendarModule } from 'primeng/calendar';
 import { MessagesModule } from 'primeng/messages';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [DeviceComponent],
@@ -27,8 +29,10 @@ import { MessagesModule } from 'primeng/messages';
     ToggleButtonModule,
     SliderModule,
     CalendarModule,
-    MessagesModule
-  ]
+    MessagesModule,
+    ConfirmPopupModule
+  ],
+  providers: [ConfirmationService],
 })
 export class DeviceModule {
 }

@@ -7,7 +7,7 @@
                   offIcon="pi pi-times"
                   [style]="{'width': '5em'}"
                   class="p-ml-3 p-my-auto"
-  [disabled]="deviceToUpdate.czyZaplanowaneWlaczenie">
+                  [disabled]="deviceToUpdate.czyZaplanowaneWlaczenie">
   </p-toggleButton>
 
   <div class="p-col-3 p-ml-3">
@@ -42,7 +42,7 @@
                   offIcon="pi pi-times"
                   class=" p-button-lg p-ml-3"
                   (click)="addMessages()"
-  (onChange)="this.deviceToUpdate.wlaczone = false">
+                  (onChange)="this.deviceToUpdate.wlaczone = false">
   </p-toggleButton>
   <p-calendar
     [(ngModel)]="deviceToUpdate.dataPlanowanegoWlaczenia"
@@ -54,6 +54,7 @@
   ></p-calendar>
 </div>
 
+
 <div class="p-mt-3">
   <button pButton
           (click)="save()"
@@ -61,11 +62,18 @@
     Zapisz
   </button>
 
-
   <button pButton
           (click)="onBack()"
           class="p-button-outlined p-button-lg p-mx-3">
     Anuluj
+  </button>
+
+  <p-confirmPopup></p-confirmPopup>
+  <button pButton
+          (click)="delete()"
+          icon="pi pi-times"
+          class="p-button-outlined p-button-lg"
+          label="Usuń">
   </button>
 </div>
 

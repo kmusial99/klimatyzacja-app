@@ -14,17 +14,17 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    HomeRoutingModule,
-    KnobModule,
-    SelectButtonModule,
-    CheckboxModule,
-    InputSwitchModule,
-    ButtonModule,
-    ToggleButtonModule
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        HomeRoutingModule,
+        KnobModule,
+        SelectButtonModule,
+        CheckboxModule,
+        InputSwitchModule,
+        ButtonModule,
+        ToggleButtonModule
+    ]
 })
 export class HomeModule {
 }

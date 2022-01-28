@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Urzadzenie } from '../models/urzadzenie';
 import { UrzadzenieService } from '../service/urzadzenieService';
-import { Message } from 'primeng/api';
+import { ConfirmationService, Message } from 'primeng/api';
 
 @Component({
   selector: 'app-device',
@@ -20,7 +20,8 @@ export class DeviceComponent implements OnInit, OnDestroy {
 
   constructor(private activatedroute: ActivatedRoute,
               private router: Router,
-              private urzadzenieService: UrzadzenieService) {
+              private urzadzenieService: UrzadzenieService,
+              private confirmationService: ConfirmationService) {
   }
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class DeviceComponent implements OnInit, OnDestroy {
       null
     );
     this.deviceToUpdate.dataPlanowanegoWlaczenia =
-    this.urzadzenie.czyZaplanowaneWlaczenie ? this.urzadzenie.dataPlanowanegoWlaczenia : this.newDate;
+      this.urzadzenie.czyZaplanowaneWlaczenie ? this.urzadzenie.dataPlanowanegoWlaczenia : this.newDate;
   }
 
   ngOnDestroy() {
@@ -63,7 +64,7 @@ export class DeviceComponent implements OnInit, OnDestroy {
   }
 
   dateInPast(ourDate: Date) {
-    if(this.deviceToUpdate.czyZaplanowaneWlaczenie === true) {
+    if (this.deviceToUpdate.czyZaplanowaneWlaczenie === true) {
       if (ourDate <= new Date()) {
         this.urzadzenie.wlaczone = true;
         this.deviceToUpdate.wlaczone = true;
@@ -71,5 +72,20 @@ export class DeviceComponent implements OnInit, OnDestroy {
         this.deviceToUpdate.czyZaplanowaneWlaczenie = false;
       }
     }
+  }
+
+  private deleteDevice(): void {
+    this.urzadzenieService.deleteDevice(this.urzadzenie.id);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  public delete(): void {
+    this.confirmationService.confirm({
+      message: 'Jesteś pewny, że chcesz usunąć to urządzenie?',
+      accept: ref => {
+        ref.offsetHeight = 1;
+        this.deleteDevice();
+      }
+    });
   }
 }
