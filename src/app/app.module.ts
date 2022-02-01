@@ -19,6 +19,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { UrzadzenieService } from './service/urzadzenieService';
 import { AddDeviceModule } from './components/add-device/add-device.module';
+import { DialogModule } from 'primeng/dialog';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
@@ -44,7 +45,8 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
         useFactory: httpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    DialogModule
   ],
   providers: [UrzadzenieService],
   bootstrap: [AppComponent]

@@ -6,7 +6,17 @@
   <router-outlet></router-outlet>
 
   <p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="10000">
-    <h3>Right Sidebar</h3>
+    <div>
+      <p-button (click)="showModalDialog()" icon="pi pi-info-circle" label="Dodatkowe informacje"></p-button>
+      <p-dialog header="Dodatkowe informacje" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+                [draggable]="false" [resizable]="false">
+        <p class="m-0">Wysuwający się sidebar jest idealnym rozwiązaniem na dodanie dodatkowych funkcjonalności w
+          przyszłości.</p>
+        <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+        </ng-template>
+      </p-dialog>
+    </div>
   </p-sidebar>
 
   <p-button class="sideBar" (click)="visibleSidebar = true" icon="pi pi-arrow-left"></p-button>

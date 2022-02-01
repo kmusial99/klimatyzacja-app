@@ -12,6 +12,7 @@ import { PrimeNGConfig } from 'primeng/api';
 export class AppComponent {
 
   visibleSidebar;
+  displayModal: boolean;
 
   constructor(
     private primengConfig: PrimeNGConfig,
@@ -31,5 +32,9 @@ export class AppComponent {
     } else {
       console.log('Run in browser');
     }
+  }
+
+  showModalDialog() {
+    this.displayModal = true;
   }
 }
