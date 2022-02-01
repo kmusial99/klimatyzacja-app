@@ -53,7 +53,17 @@ export class UrzadzenieService {
     this.urzadzenia.push(urzadzenie);
   }
 
-  deleteDevice(idDeviceToDelete: number) {
-    this.urzadzenia = this.urzadzenia.filter(urzadzenie => urzadzenie.id !== idDeviceToDelete);
+  deleteDevice(urzadzenie: Urzadzenie) {
+    this.urzadzenia = this.urzadzenia.filter(device => device.id !== urzadzenie.id);
+    this.addOldDeviceToAvaibleDevices(urzadzenie);
+  }
+
+  public addOldDeviceToAvaibleDevices(urzadzenie: Urzadzenie) {
+    urzadzenie.id = this.availableDevices[this.availableDevices.length - 1].id + 1;
+    urzadzenie.wlaczone = false;
+    urzadzenie.czyZaplanowaneWlaczenie = false;
+    urzadzenie.dataPlanowanegoWlaczenia = new Date();
+    urzadzenie.temperatura = 0;
+    this.availableDevices.push(urzadzenie);
   }
 }

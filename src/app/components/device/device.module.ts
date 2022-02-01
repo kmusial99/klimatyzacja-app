@@ -15,6 +15,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { MessagesModule } from 'primeng/messages';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ConfirmationService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [DeviceComponent],
@@ -30,7 +32,9 @@ import { ConfirmationService } from 'primeng/api';
     SliderModule,
     CalendarModule,
     MessagesModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    ConfirmDialogModule,
+    ToastModule
   ],
   providers: [ConfirmationService],
 })

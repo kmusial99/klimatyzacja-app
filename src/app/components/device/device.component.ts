@@ -22,8 +22,7 @@ export class DeviceComponent implements OnInit, OnDestroy {
   constructor(private activatedroute: ActivatedRoute,
               private router: Router,
               private urzadzenieService: UrzadzenieService,
-              private confirmationService: ConfirmationService,
-              private messageService: MessageService) {
+              private confirmationService: ConfirmationService) {
   }
 
   ngOnInit() {
@@ -76,39 +75,16 @@ export class DeviceComponent implements OnInit, OnDestroy {
     }
   }
 
-  private deleteDevice(): void {
-    this.urzadzenieService.deleteDevice(this.urzadzenie.id);
-  }
-
   // eslint-disable-next-line @typescript-eslint/member-ordering
   public delete(): void {
-    this.confirmationService.confirm({
-      message: 'Jesteś pewny, że chcesz usunąć to urządzenie?',
-      accept: ref => {
-        ref.offsetHeight = 1;
-        this.deleteDevice();
-      }
-    });
-  }
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  public delete1(): void {
     this.confirmationService.confirm({
       message: 'Jesteś pewny, że chcesz usunąć to urządzenie?',
       header: 'Usuwanie urządzenia',
       icon: 'pi pi-info-circle',
       accept: () => {
-        this.messageService.add({severity:'info', summary:'Confirmed', detail:'Record deleted'});
-      },
-      reject: (type) => {
-        switch(type) {
-          case ConfirmEventType.REJECT:
-            this.messageService.add({severity:'error', summary:'Rejected', detail:'You have rejected'});
-            break;
-          case ConfirmEventType.CANCEL:
-            this.messageService.add({severity:'warn', summary:'Cancelled', detail:'You have cancelled'});
-            break;
-        }
+        this.messages = [ { severity: 'success', summary: 'Usunięto urządzenie'} ];
+        this.router.navigate(['home']);
+        this.urzadzenieService.deleteDevice(this.urzadzenie);
       }
     });
   }
