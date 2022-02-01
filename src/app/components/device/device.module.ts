@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { KnobModule } from 'primeng/knob';
 
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { DeviceRoutingModule } from './device-routing.module';
 import { DeviceComponent } from './device.component';
 import { InputNumberModule } from 'primeng/inputnumber';

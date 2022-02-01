@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { ButtonModule } from 'primeng/button';
 import { AddDeviceComponent } from './add-device.component';
 import { AddDeviceRoutingModule } from './add-device-routing.module';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Urzadzenie } from '../models/urzadzenie';
-import { UrzadzenieService } from '../service/urzadzenieService';
+import { Urzadzenie } from '../../models/urzadzenie';
+import { UrzadzenieService } from '../../service/urzadzenieService';
 import { Message } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

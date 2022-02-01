@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Urzadzenie } from '../models/urzadzenie';
-import { UrzadzenieService } from '../service/urzadzenieService';
-import { ConfirmationService, Message } from 'primeng/api';
+import { Urzadzenie } from '../../models/urzadzenie';
+import { UrzadzenieService } from '../../service/urzadzenieService';
+import { ConfirmationService, ConfirmEventType, Message, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-device',
   templateUrl: './device.component.html',
-  styleUrls: ['./device.component.scss']
+  styleUrls: ['./device.component.scss'],
+  providers: [ConfirmationService,MessageService]
 })
 export class DeviceComponent implements OnInit, OnDestroy {
 
@@ -21,7 +22,8 @@ export class DeviceComponent implements OnInit, OnDestroy {
   constructor(private activatedroute: ActivatedRoute,
               private router: Router,
               private urzadzenieService: UrzadzenieService,
-              private confirmationService: ConfirmationService) {
+              private confirmationService: ConfirmationService,
+              private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -85,6 +87,28 @@ export class DeviceComponent implements OnInit, OnDestroy {
       accept: ref => {
         ref.offsetHeight = 1;
         this.deleteDevice();
+      }
+    });
+  }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  public delete1(): void {
+    this.confirmationService.confirm({
+      message: 'Jesteś pewny, że chcesz usunąć to urządzenie?',
+      header: 'Usuwanie urządzenia',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+        this.messageService.add({severity:'info', summary:'Confirmed', detail:'Record deleted'});
+      },
+      reject: (type) => {
+        switch(type) {
+          case ConfirmEventType.REJECT:
+            this.messageService.add({severity:'error', summary:'Rejected', detail:'You have rejected'});
+            break;
+          case ConfirmEventType.CANCEL:
+            this.messageService.add({severity:'warn', summary:'Cancelled', detail:'You have cancelled'});
+            break;
+        }
       }
     });
   }

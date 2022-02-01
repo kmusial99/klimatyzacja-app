@@ -11,7 +11,7 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppComponent {
 
-  visibleSidebar2;
+  visibleSidebar;
 
   constructor(
     private primengConfig: PrimeNGConfig,

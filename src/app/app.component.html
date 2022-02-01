@@ -5,9 +5,11 @@
   </header>
   <router-outlet></router-outlet>
 
-  <p-sidebar [(visible)]="visibleSidebar2" position="right" [baseZIndex]="10000">
+  <p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="10000">
     <h3>Right Sidebar</h3>
   </p-sidebar>
 
-  <p-button class="sideBar" (click)="visibleSidebar2 = true" icon="pi pi-arrow-left"></p-button>
+  <p-button class="sideBar" (click)="visibleSidebar = true" icon="pi pi-arrow-left"></p-button>
+
+
 </div>

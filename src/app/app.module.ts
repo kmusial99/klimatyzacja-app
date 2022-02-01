@@ -10,15 +10,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { HomeModule } from './home/home.module';
+import { HomeModule } from './components/home/home.module';
 
 import { AppComponent } from './app.component';
-import { DeviceModule } from './device/device.module';
+import { DeviceModule } from './components/device/device.module';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { UrzadzenieService } from './service/urzadzenieService';
-import { AddDeviceModule } from './add-device/add-device.module';
+import { AddDeviceModule } from './components/add-device/add-device.module';
 
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
 
