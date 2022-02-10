@@ -1,21 +1,32 @@
 <div class="container">
   <div *ngFor="let urzadzenie of urzadzenia" style="margin-top: 3%;margin-left: 5%">
-    <p-toggleButton [(ngModel)]="urzadzenie.wlaczone"
-                    onLabel="On"
-                    offLabel="Off"
-                    onIcon="pi pi-check"
-                    offIcon="pi pi-times"
-                    [style]="{'width': '5em'}"
-                    (onChange)="onDeviceChange(urzadzenie)">
-    </p-toggleButton>
-    <button pButton
-            [routerLink]="['/device', urzadzenie.id]"
-            [style]="{ left: '2%' }"
-            class="p-button-outlined p-button-lg">
-      {{ urzadzenie.nazwa }}
-        &nbsp;
-      <i *ngIf="urzadzenie.czyZaplanowaneWlaczenie" class="pi pi-clock"></i>
-    </button>
+    <div class="p-d-flex">
+      <p-toggleButton [(ngModel)]="urzadzenie.wlaczone"
+                      onLabel="On"
+                      offLabel="Off"
+                      onIcon="pi pi-check"
+                      offIcon="pi pi-times"
+                      [style]="{'width': '5em'}"
+                      class="p-my-auto"
+                      (onChange)="onDeviceChange(urzadzenie)">
+      </p-toggleButton>
+      <div [style]="{'width': '7em'}" class="p-my-auto p-ml-3">
+        <div class="p-inputgroup">
+          <input type="text" pInputText placeholder="Aktualna temperatura" [disabled]="true"
+                 [(ngModel)]="urzadzenie.aktualnaTemperatura">
+          <span class="p-inputgroup-addon">°C</span>
+        </div>
+      </div>
+      <button pButton
+              [routerLink]="['/device', urzadzenie.id]"
+              class="p-button-outlined p-button-lg p-ml-3">
+        {{ urzadzenie.nazwa }}
+        <div *ngIf="urzadzenie.czyZaplanowaneWlaczenie">
+          &nbsp;
+        </div>
+        <i *ngIf="urzadzenie.czyZaplanowaneWlaczenie" class="pi pi-clock"></i>
+      </button>
+    </div>
   </div>
+  <h2 *ngIf="urzadzenia.length === 0" class="p-m-3" style="color: #9FA8DA">Nie dodano żadnych urządzeń.</h2>
 </div>
-

@@ -4,21 +4,21 @@ export class UrzadzenieService {
   private newDate: Date = new Date();
 
   private urzadzenia = [
-    new Urzadzenie(0, 'Sypialnia', false, 20, false, new Date()),
-    new Urzadzenie(1, 'Sypialnia 2', true, 23, false, new Date()),
-    new Urzadzenie(2, 'Salon', false, 15, true, this.newDate)
+    new Urzadzenie(0, 'Sypialnia', 'Klimatyzator M', false, 20, 20, false, new Date()),
+    new Urzadzenie(1, 'Sypialnia 2', 'Klimatyzator K', true, 23, 23, false, new Date()),
+    new Urzadzenie(2, 'Salon', 'Klimatyzator L', false, 15, 15, true, this.newDate)
   ];
 
   private availableDevices = [
-    new Urzadzenie(0, 'Klimatyzator 1230', false, 20, false, new Date()),
-    new Urzadzenie(1, 'Klimatyzator 2000', true, null, false, new Date())
+    new Urzadzenie(0, 'Klimatyzator C', 'Klimatyzator C', false, null, null, false, new Date()),
+    new Urzadzenie(1, 'Klimatyzator A', 'Klimatyzator A', true, null, null, false, new Date())
   ];
 
   constructor() {
     this.newDate.setHours(this.newDate.getHours() + 1);
   }
 
-  public getUrzadzenia() {
+  public getUrzadzenia(): Urzadzenie[] {
     return this.urzadzenia;
   }
 
@@ -26,15 +26,7 @@ export class UrzadzenieService {
     return this.availableDevices;
   }
 
-  // public getUrzadzenie(id: number): Urzadzenie {
-  //   return this.urzadzenia.find(device => {
-  //     if (device.id === id) {
-  //       return device;
-  //     }
-  //   });
-  // }
-
-  public updateUrzadzenie(newDevice: Urzadzenie) {
+  public updateUrzadzenie(newDevice: Urzadzenie): void {
     this.urzadzenia = this.urzadzenia.map(oldDevice => {
       if (oldDevice.id === newDevice.id) {
         return newDevice;
@@ -43,27 +35,28 @@ export class UrzadzenieService {
     });
   }
 
-  public addUrzadzenie(urzadzenie: Urzadzenie) {
+  public addUrzadzenie(urzadzenie: Urzadzenie): void {
     this.availableDevices = this.availableDevices.filter(value => value.id !== urzadzenie.id);
-    urzadzenie.id = this.urzadzenia[this.urzadzenia.length - 1].id + 1;
-    urzadzenie.wlaczone = false;
+    urzadzenie.id = this.urzadzenia.length > 0 ? (this.urzadzenia[this.urzadzenia.length - 1].id + 1) : 0;
+    urzadzenie.czyWlaczone = false;
     urzadzenie.czyZaplanowaneWlaczenie = false;
     urzadzenie.dataPlanowanegoWlaczenia = new Date();
-    urzadzenie.temperatura = 0;
+    urzadzenie.zadanaTemperatura = 0;
     this.urzadzenia.push(urzadzenie);
   }
 
-  deleteDevice(urzadzenie: Urzadzenie) {
+  public deleteDevice(urzadzenie: Urzadzenie): void {
     this.urzadzenia = this.urzadzenia.filter(device => device.id !== urzadzenie.id);
     this.addOldDeviceToAvaibleDevices(urzadzenie);
   }
 
-  public addOldDeviceToAvaibleDevices(urzadzenie: Urzadzenie) {
-    urzadzenie.id = this.availableDevices[this.availableDevices.length - 1].id + 1;
-    urzadzenie.wlaczone = false;
+  public addOldDeviceToAvaibleDevices(urzadzenie: Urzadzenie): void {
+    urzadzenie.id = this.availableDevices.length > 0 ? (this.availableDevices[this.availableDevices.length - 1].id + 1) : 0;
+    urzadzenie.nazwa = urzadzenie.nazwaSeryjna;
+    urzadzenie.czyWlaczone = false;
     urzadzenie.czyZaplanowaneWlaczenie = false;
     urzadzenie.dataPlanowanegoWlaczenia = new Date();
-    urzadzenie.temperatura = 0;
+    urzadzenie.zadanaTemperatura = 0;
     this.availableDevices.push(urzadzenie);
   }
 }

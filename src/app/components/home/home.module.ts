@@ -11,6 +11,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { ButtonModule } from 'primeng/button';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -23,7 +24,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
         CheckboxModule,
         InputSwitchModule,
         ButtonModule,
-        ToggleButtonModule
+        ToggleButtonModule,
+        InputTextModule
     ]
 })
 export class HomeModule {

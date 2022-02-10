@@ -1,6 +1,6 @@
-<h3 class="p-m-3">Device Details</h3>
-<div class="p-grid p-fluid p-col-9">
-  <p-toggleButton [(ngModel)]="deviceToUpdate.wlaczone"
+<h2 class="p-m-3" style="color: #9FA8DA">Szczegóły urządzenia</h2>
+<div class="p-grid p-fluid p-col-12">
+  <p-toggleButton [(ngModel)]="deviceToUpdate.czyWlaczone"
                   onLabel="On"
                   offLabel="Off"
                   onIcon="pi pi-check"
@@ -19,35 +19,47 @@
   </div>
 </div>
 
-<div class="p-grid p-fluid p-col-9">
-  <div class="p-col-3 p-my-auto p-ml-3">
-    <p-slider
-      [(ngModel)]="deviceToUpdate.temperatura"
-      [min]="-30"
-      [max]="50"></p-slider>
-  </div>
-
+<div class="p-grid p-fluid p-col-12">
+  <h3 class="p-m-3 p-col-2" style="color: #9FA8DA">Zadana temperatura</h3>
   <div [style]="{'width': '7em'}" class="p-my-auto p-ml-3">
     <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Temperatura" [(ngModel)]="deviceToUpdate.temperatura">
+      <input type="text" pInputText placeholder="Zadana temperatura" [(ngModel)]="deviceToUpdate.zadanaTemperatura">
+      <span class="p-inputgroup-addon">°C</span>
+    </div>
+  </div>
+</div>
+<div class="p-grid p-fluid p-col-12">
+  <div class="p-col-3 p-my-auto p-ml-3">
+    <p-slider
+      [(ngModel)]="deviceToUpdate.zadanaTemperatura"
+      [min]="-10"
+      [max]="40"></p-slider>
+  </div>
+</div>
+<div class="p-grid p-fluid p-col-12">
+  <h3 class="p-m-3 p-col-2" style="color: #9FA8DA">Aktualna temperatura</h3>
+  <div [style]="{'width': '7em'}" class="p-my-auto p-ml-3">
+    <div class="p-inputgroup">
+      <input type="text" pInputText placeholder="Aktualna temperatura" [disabled]="true"
+             [(ngModel)]="deviceToUpdate.aktualnaTemperatura">
       <span class="p-inputgroup-addon">°C</span>
     </div>
   </div>
 </div>
 
-<div>
+<div class="p-grid p-fluid p-col-12">
   <p-toggleButton [(ngModel)]="deviceToUpdate.czyZaplanowaneWlaczenie"
                   onLabel="Zaplanuj włączenie"
                   offLabel="Zaplanuj włączenie"
                   onIcon="pi pi-check"
                   offIcon="pi pi-times"
-                  class=" p-button-lg p-ml-3"
+                  class=" p-button-lg p-ml-3 p-my-auto"
                   (click)="setToEnableMessageShow()"
-                  (onChange)="this.deviceToUpdate.wlaczone = false">
+                  (onChange)="this.deviceToUpdate.czyWlaczone = false">
   </p-toggleButton>
   <p-calendar
     [(ngModel)]="deviceToUpdate.dataPlanowanegoWlaczenia"
-    class="p-col-2 p-ml-3 p-my-auto"
+    class="p-col-2 p-ml-3"
     showTime="true"
     [showIcon]="true"
     inputId="icon"
@@ -65,14 +77,14 @@
 
   <button pButton
           (click)="onBack()"
-          class="p-button-outlined p-button-lg p-mx-3">
+          class="p-button-outlined p-button-lg p-ml-3">
     Anuluj
   </button>
 
   <button
     pButton
     (click)="delete()"
-    class="p-button-outlined p-button-lg p-mx-3">
+    class="p-button-outlined p-button-lg p-ml-3">
     <i class="pi pi-times"></i>
     &nbsp;
     Usuń
@@ -88,6 +100,7 @@
   [(value)]="messages"
   [enableService]="false"></p-messages>
 
-<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"
+                 rejectButtonStyleClass="p-button-text"></p-confirmDialog>
 
 <p-toast></p-toast>

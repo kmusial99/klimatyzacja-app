@@ -11,8 +11,8 @@ import { interval, Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnDestroy {
 
-  urzadzenia: Urzadzenie[];
-  subscription: Subscription;
+  public urzadzenia: Urzadzenie[];
+  private subscription: Subscription;
 
   constructor(private router: Router,
               private urzadzenieService: UrzadzenieService) {
@@ -22,21 +22,21 @@ export class HomeComponent implements OnDestroy {
       const time = new Date();
       this.urzadzenia.forEach(value => {
         if (value.czyZaplanowaneWlaczenie && value.dataPlanowanegoWlaczenia <= time) {
-          value.wlaczone = true;
+          value.czyWlaczone = true;
           value.czyZaplanowaneWlaczenie = false;
         }
       });
     });
   }
 
-  onDeviceChange(urzadzenie: Urzadzenie) {
-    if (urzadzenie.wlaczone) {
+  public onDeviceChange(urzadzenie: Urzadzenie): void {
+    if (urzadzenie.czyWlaczone) {
       urzadzenie.czyZaplanowaneWlaczenie = false;
       urzadzenie.dataPlanowanegoWlaczenia = new Date();
     }
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }

@@ -17,13 +17,13 @@ export class AddDeviceComponent implements OnInit {
   public selectedUrzadzenie: Urzadzenie;
   public displayDialog: boolean;
   public newName: string;
-  form: FormGroup;
+  public form: FormGroup;
 
   constructor(private urzadzenieService: UrzadzenieService,
               private formBuilder: FormBuilder) {
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.form = this.formBuilder.group({
       name: [null, Validators.required],
     });

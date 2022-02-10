@@ -7,13 +7,33 @@
 
   <p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="10000">
     <div>
-      <p-button (click)="showModalDialog()" icon="pi pi-info-circle" label="Dodatkowe informacje"></p-button>
-      <p-dialog header="Dodatkowe informacje" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+      <button pButton
+              class="p-button-outlined p-button-lg p-mb-5"
+              (click)="showInfoDialog()"
+              icon="pi pi-info-circle"
+              label="Dodatkowe informacje"
+      ></button>
+      <p-dialog header="Dodatkowe informacje" [(visible)]="displayInfoModal" [modal]="true" [style]="{width: '50vw'}"
                 [draggable]="false" [resizable]="false">
         <p class="m-0">Wysuwający się sidebar jest idealnym rozwiązaniem na dodanie dodatkowych funkcjonalności w
           przyszłości.</p>
         <ng-template pTemplate="footer">
-          <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+          <p-button icon="pi pi-check" (click)="displayInfoModal=false" label="Ok" styleClass="p-button-text"></p-button>
+        </ng-template>
+      </p-dialog>
+    </div>
+
+    <div>
+      <button pButton
+              class="p-button-outlined p-button-lg"
+              (click)="showContactDialog()"
+              label="Skontaktuj się z nami"
+      ></button>
+      <p-dialog header="Linkedin" [(visible)]="displayContactModal" [modal]="true" [style]="{width: '50vw'}"
+                [draggable]="false" [resizable]="false">
+        <p class="m-0">https://www.linkedin.com/in/karol-musia%C5%82-8bb79520a/</p>
+        <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="displayContactModal=false" label="Ok" styleClass="p-button-text"></p-button>
         </ng-template>
       </p-dialog>
     </div>

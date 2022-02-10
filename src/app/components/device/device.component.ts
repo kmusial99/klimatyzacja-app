@@ -25,7 +25,7 @@ export class DeviceComponent implements OnInit, OnDestroy {
               private confirmationService: ConfirmationService) {
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.sub = this.activatedroute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'));
       const urzadzenia = this.urzadzenieService.getUrzadzenia();
@@ -34,8 +34,10 @@ export class DeviceComponent implements OnInit, OnDestroy {
     this.deviceToUpdate = new Urzadzenie(
       this.urzadzenie.id,
       this.urzadzenie.nazwa,
-      this.urzadzenie.wlaczone,
-      this.urzadzenie.temperatura,
+      this.urzadzenie.nazwaSeryjna,
+      this.urzadzenie.czyWlaczone,
+      this.urzadzenie.zadanaTemperatura,
+      this.urzadzenie.aktualnaTemperatura,
       this.urzadzenie.czyZaplanowaneWlaczenie,
       null
     );
@@ -43,16 +45,16 @@ export class DeviceComponent implements OnInit, OnDestroy {
       this.urzadzenie.czyZaplanowaneWlaczenie ? this.urzadzenie.dataPlanowanegoWlaczenia : this.newDate;
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.dateInPast(this.deviceToUpdate.dataPlanowanegoWlaczenia);
     this.sub.unsubscribe();
   }
 
-  onBack(): void {
+  public onBack(): void {
     this.router.navigate(['home']);
   }
 
-  save() {
+  public save(): void {
     // if (this.deviceToUpdate.czyZaplanowaneWlaczenie) {
     //   this.setToEnableMessageShow();
     // }
@@ -64,38 +66,43 @@ export class DeviceComponent implements OnInit, OnDestroy {
     this.router.navigate(['home']);
   }
 
-  setToEnableMessageShow() {
-    const year = new Intl.DateTimeFormat('pl', { year: 'numeric' }).format(this.deviceToUpdate.dataPlanowanegoWlaczenia);
-    const month = new Intl.DateTimeFormat('pl', { month: '2-digit' }).format(this.deviceToUpdate.dataPlanowanegoWlaczenia);
-    const day = new Intl.DateTimeFormat('pl', { day: '2-digit' }).format(this.deviceToUpdate.dataPlanowanegoWlaczenia);
-    const hour = new Intl.DateTimeFormat('pl', { hour: '2-digit' }).format(this.deviceToUpdate.dataPlanowanegoWlaczenia);
-    const minute = new Intl.DateTimeFormat('pl', { minute: '2-digit' }).format(this.deviceToUpdate.dataPlanowanegoWlaczenia);
-    const formattedDate = `${day}.${month}.${year} o godzinie ${hour}:${minute}`;
-    this.messages = [
-      { severity: 'success', summary: `Klimatyzator uruchomi się ${formattedDate}` }
-    ];
+  public setToEnableMessageShow(): void {
+    if (this.deviceToUpdate.czyZaplanowaneWlaczenie) {
+      const year = new Intl.DateTimeFormat('pl', { year: 'numeric' }).format(this.deviceToUpdate.dataPlanowanegoWlaczenia);
+      const month = new Intl.DateTimeFormat('pl', { month: '2-digit' }).format(this.deviceToUpdate.dataPlanowanegoWlaczenia);
+      const day = new Intl.DateTimeFormat('pl', { day: '2-digit' }).format(this.deviceToUpdate.dataPlanowanegoWlaczenia);
+      const hour = new Intl.DateTimeFormat('pl', { hour: '2-digit' }).format(this.deviceToUpdate.dataPlanowanegoWlaczenia);
+      const minute = new Intl.DateTimeFormat('pl', { minute: '2-digit' }).format(this.deviceToUpdate.dataPlanowanegoWlaczenia);
+      const formattedDate = `${day}.${month}.${year} o godzinie ${hour}:${minute}`;
+      this.messages = [
+        { severity: 'success', summary: `Klimatyzator uruchomi się ${formattedDate}` }
+      ];
+    }
   }
 
-  turnOnMessageShow() {
-    this.messages = [
-      { severity: 'success', summary: 'Uruchomiono klimatyzator' }
-    ];
+  public turnOnMessageShow(): void {
+    if (this.deviceToUpdate.czyWlaczone) {
+      this.messages = [
+        { severity: 'success', summary: 'Uruchomiono klimatyzator' }
+      ];
+    }
   }
 
-  dateInPast(ourDate: Date) {
+  public dateInPast(ourDate: Date): void {
     if (this.deviceToUpdate.czyZaplanowaneWlaczenie === true) {
       if (ourDate <= new Date()) {
-        this.urzadzenie.wlaczone = true;
-        this.deviceToUpdate.wlaczone = true;
+        this.urzadzenie.czyWlaczone = true;
+        this.deviceToUpdate.czyWlaczone = true;
         this.urzadzenie.czyZaplanowaneWlaczenie = false;
         this.deviceToUpdate.czyZaplanowaneWlaczenie = false;
       }
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   public delete(): void {
     this.confirmationService.confirm({
+      acceptLabel: 'Usuń',
+      rejectLabel: 'Anuluj',
       message: 'Jesteś pewny, że chcesz usunąć to urządzenie?',
       header: 'Usuwanie urządzenia',
       icon: 'pi pi-info-circle',
