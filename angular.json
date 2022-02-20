@@ -115,46 +115,12 @@
             "browserTarget": "klimatyzacja-gui:build"
           }
         },
-        "test": {
-          "builder": "@angular-builders/custom-webpack:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills-test.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "scripts": [],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "assets": [
-              "src/assets"
-            ],
-            "customWebpackConfig": {
-              "path": "./angular.webpack.js",
-              "replaceDuplicatePlugins": true
-            }
-          }
-        },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
               "src/**/*.ts",
               "src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "klimatyzacja-gui-e2e": {
-      "root": "e2e",
-      "projectType": "application",
-      "architect": {
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "e2e/**/*.ts"
             ]
           }
         }

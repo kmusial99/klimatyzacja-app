@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ElectronService } from './core/services';
-import { TranslateService } from '@ngx-translate/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { KlimatyzatorService } from './service/klimatyzator.service';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +16,9 @@ export class AppComponent {
   constructor(
     private primengConfig: PrimeNGConfig,
     private electronService: ElectronService,
-    private translate: TranslateService
+    private klimatyzatorService: KlimatyzatorService,
   ) {
     this.primengConfig.ripple = true;
-    this.translate.setDefaultLang('en');
   }
 
   public showInfoDialog(): void {

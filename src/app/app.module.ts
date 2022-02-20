@@ -1,14 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
-
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { HomeModule } from './components/home/home.module';
 
@@ -20,8 +17,7 @@ import { ButtonModule } from 'primeng/button';
 import { UrzadzenieService } from './service/urzadzenieService';
 import { AddDeviceModule } from './components/add-device/add-device.module';
 import { DialogModule } from 'primeng/dialog';
-
-const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
+import { KlimatyzatorService } from './service/klimatyzator.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,16 +35,9 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     SidebarModule,
     ButtonModule,
     AddDeviceModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
     DialogModule
   ],
-  providers: [UrzadzenieService],
+  providers: [UrzadzenieService, KlimatyzatorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
