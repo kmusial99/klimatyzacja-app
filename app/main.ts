@@ -15,8 +15,8 @@ function createWindow(): BrowserWindow {
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: size.width,
-    height: size.height,
+    width: 800,
+    height: 500,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
@@ -24,9 +24,9 @@ function createWindow(): BrowserWindow {
     },
   });
 
-
   if (serve) {
     win.webContents.openDevTools();
+    win.setMenu(null);
     require('electron-reload')(__dirname, {
       electron: require(path.join(__dirname, '/../node_modules/electron'))
     });

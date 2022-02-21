@@ -10,8 +10,8 @@ export class UrzadzenieService {
   ];
 
   private availableDevices = [
-    new Urzadzenie(0, 'Klimatyzator C', 'Klimatyzator C', false, null, null, false, new Date()),
-    new Urzadzenie(1, 'Klimatyzator A', 'Klimatyzator A', true, null, null, false, new Date())
+    new Urzadzenie(0, 'Klimatyzator C', 'Klimatyzator C', false, 20, 20, false, new Date()),
+    new Urzadzenie(1, 'Klimatyzator A', 'Klimatyzator A', true, 20, 20, false, new Date())
   ];
 
   constructor() {
