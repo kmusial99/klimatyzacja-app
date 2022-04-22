@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ElectronService } from './core/services';
 import { PrimeNGConfig } from 'primeng/api';
 import { KlimatyzatorService } from './service/klimatyzator.service';
 
@@ -15,7 +14,6 @@ export class AppComponent {
 
   constructor(
     private primengConfig: PrimeNGConfig,
-    private electronService: ElectronService,
     private klimatyzatorService: KlimatyzatorService,
   ) {
     this.primengConfig.ripple = true;

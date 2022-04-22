@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Urzadzenie } from '../../models/urzadzenie';
-import { UrzadzenieService } from '../../service/urzadzenieService';
+import { UrzadzenieService } from '../../service/urzadzenie.service';
 import { Message } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-device',
-  templateUrl: './add-device.component.html',
-  styleUrls: ['./add-device.component.scss']
+  templateUrl: './add-device.component.html'
 })
 export class AddDeviceComponent implements OnInit {
 

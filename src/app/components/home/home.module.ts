@@ -12,6 +12,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { ButtonModule } from 'primeng/button';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { InputTextModule } from 'primeng/inputtext';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -25,7 +26,8 @@ import { InputTextModule } from 'primeng/inputtext';
         InputSwitchModule,
         ButtonModule,
         ToggleButtonModule,
-        InputTextModule
+        InputTextModule,
+      MessagesModule
     ]
 })
 export class HomeModule {

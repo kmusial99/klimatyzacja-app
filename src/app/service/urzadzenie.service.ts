@@ -4,9 +4,9 @@ export class UrzadzenieService {
   private newDate: Date = new Date();
 
   private urzadzenia = [
-    new Urzadzenie(0, 'Sypialnia', 'Klimatyzator M', false, 20, 20, false, new Date()),
-    new Urzadzenie(1, 'Sypialnia 2', 'Klimatyzator K', true, 23, 23, false, new Date()),
-    new Urzadzenie(2, 'Salon', 'Klimatyzator L', false, 15, 15, true, this.newDate)
+    new Urzadzenie(0, 'Sypialnia', 'Klimatyzator M', false, 20, 5, false, new Date()),
+    new Urzadzenie(1, 'Sypialnia 2', 'Klimatyzator K', true, 5, 23, false, new Date()),
+    new Urzadzenie(2, 'Salon', 'Klimatyzator L', false, 15, 1, true, this.newDate)
   ];
 
   private availableDevices = [
@@ -14,12 +14,22 @@ export class UrzadzenieService {
     new Urzadzenie(1, 'Klimatyzator A', 'Klimatyzator A', true, 20, 20, false, new Date())
   ];
 
+  private deviceToPopup = null;
+
   constructor() {
     this.newDate.setHours(this.newDate.getHours() + 1);
   }
 
   public getUrzadzenia(): Urzadzenie[] {
     return this.urzadzenia;
+  }
+
+  public getDeviceToPopup(): Urzadzenie {
+    return this.deviceToPopup;
+  }
+
+  public setDeviceToPopup(urzadzenie: Urzadzenie): void {
+    this.deviceToPopup = urzadzenie;
   }
 
   public getAvailableDevices(): Urzadzenie[] {
@@ -33,6 +43,20 @@ export class UrzadzenieService {
       }
       return oldDevice;
     });
+  }
+
+  public updateTemp(deviceId: number, zmiana: number): void {
+    this.urzadzenia = this.urzadzenia.map(oldDevice => {
+      if (oldDevice.id === deviceId) {
+        oldDevice.aktualnaTemperatura = oldDevice.aktualnaTemperatura + zmiana;
+        return oldDevice;
+      }
+      return oldDevice;
+    });
+  }
+
+  public isDeviceDeleted(urzadzenie: Urzadzenie): boolean {
+    return this.urzadzenia.filter(value => value.id === urzadzenie.id).length === 0;
   }
 
   public addUrzadzenie(urzadzenie: Urzadzenie): void {

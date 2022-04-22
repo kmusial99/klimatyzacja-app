@@ -8,6 +8,7 @@
                       offIcon="pi pi-times"
                       [style]="{'width': '5em'}"
                       class="p-my-auto"
+                      (click)="showTurnOnMessage(urzadzenie)"
                       (onChange)="onDeviceChange(urzadzenie)">
       </p-toggleButton>
       <div [style]="{'width': '7em'}" class="p-my-auto p-ml-3">
@@ -30,3 +31,12 @@
   </div>
   <h2 *ngIf="urzadzenia.length === 0" class="p-m-3" style="color: #9FA8DA">Nie dodano żadnych urządzeń.</h2>
 </div>
+
+<p-messages
+  [style]="{
+          position: 'absolute',
+          top: '50px',
+          right: '5px'
+          }"
+  [(value)]="messages"
+  [enableService]="false"></p-messages>

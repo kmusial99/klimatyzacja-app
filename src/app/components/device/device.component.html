@@ -7,8 +7,7 @@
                   offIcon="pi pi-times"
                   [style]="{'width': '5em'}"
                   class="p-ml-3 p-my-auto"
-                  (click)="turnOnMessageShow()"
-                  [disabled]="deviceToUpdate.czyZaplanowaneWlaczenie">
+                  (onChange)="this.deviceToUpdate.czyZaplanowaneWlaczenie = false">
   </p-toggleButton>
 
   <div class="p-col-3 p-ml-3">
@@ -54,7 +53,6 @@
                   onIcon="pi pi-check"
                   offIcon="pi pi-times"
                   class=" p-button-lg p-ml-3 p-my-auto"
-                  (click)="setToEnableMessageShow()"
                   (onChange)="this.deviceToUpdate.czyWlaczone = false">
   </p-toggleButton>
   <p-calendar

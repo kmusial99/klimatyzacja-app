@@ -14,7 +14,7 @@ import { DeviceModule } from './components/device/device.module';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
-import { UrzadzenieService } from './service/urzadzenieService';
+import { UrzadzenieService } from './service/urzadzenie.service';
 import { AddDeviceModule } from './components/add-device/add-device.module';
 import { DialogModule } from 'primeng/dialog';
 import { KlimatyzatorService } from './service/klimatyzator.service';

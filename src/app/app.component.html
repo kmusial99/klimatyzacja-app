@@ -1,7 +1,7 @@
-<div class="container">
+<body class="container" style="background-image: url('../assets/images/city.jpg'); background-size: cover;">
   <header>
-    <a routerLink="/home">Urządzenia</a>
-    <a routerLink="/add-device">Dodaj urządzenie</a>
+    <a [routerLink]="'/home'">Urządzenia</a>
+    <a [routerLink]="'/add-device'">Dodaj urządzenie</a>
   </header>
   <router-outlet></router-outlet>
 
@@ -42,4 +42,4 @@
   <p-button class="sideBar" (click)="visibleSidebar = true" icon="pi pi-arrow-left"></p-button>
 
 
-</div>
+</body>
