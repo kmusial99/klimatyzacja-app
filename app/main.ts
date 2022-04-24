@@ -24,14 +24,16 @@ function createWindow(): BrowserWindow {
   });
 
   if (serve) {
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
     win.setMenu(null);
     require('electron-reload')(__dirname, {
       electron: require(path.join(__dirname, '/../node_modules/electron'))
     });
     win.loadURL('http://localhost:4200');
   } else {
-    let pathIndex = './index.html';
+    let pathIndex = '../dist/index.html';
+    // win.webContents.openDevTools();
+    win.setMenu(null);
 
     if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
       pathIndex = '../dist/index.html';

@@ -1,8 +1,14 @@
-<body class="container" style="background-image: url('../assets/images/city.jpg'); background-size: cover;">
-  <header>
-    <a [routerLink]="'/home'">Urządzenia</a>
-    <a [routerLink]="'/add-device'">Dodaj urządzenie</a>
-  </header>
+<body class="container" style="background-image: url('./assets/images/city.jpg'); background-size: cover;">
+<header>
+  <div class="p-grid p-px-0 p-mx-0 p-pt-0">
+    <div class="p-col-6 p-px-0">
+      <a [routerLink]="'/home'">Urządzenia</a>
+    </div>
+    <div class="p-col-6 p-px-0">
+      <a [routerLink]="'/add-device'">Dodaj urządzenie</a>
+    </div>
+  </div>
+</header>
   <router-outlet></router-outlet>
 
   <p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="10000">
