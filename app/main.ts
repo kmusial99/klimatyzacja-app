@@ -1,7 +1,7 @@
 import { app, BrowserWindow, screen } from 'electron';
-import * as path from 'path';
 import * as fs from 'fs';
-import * as url from 'url';
+const path = require("path");
+const url = require('url');
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -31,7 +31,7 @@ function createWindow(): BrowserWindow {
     });
     win.loadURL('http://localhost:4200');
   } else {
-    let pathIndex = '../dist/index.html';
+    let pathIndex = './index.html';
     // win.webContents.openDevTools();
     win.setMenu(null);
 

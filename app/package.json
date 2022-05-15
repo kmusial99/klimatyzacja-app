@@ -1,7 +1,10 @@
 {
   "name": "klimatyzacja-gui",
-  "version": "1",
+  "version": "1.0.0",
   "main": "main.js",
   "private": true,
+  "author": "Karol, Musiał <karolmusial99@gmail.com>",
+  "email" : "karolmusial99@gmail.com",
+  "url" : "https://github.com/karol-musial/klimatyzacja-gui",
   "dependencies": {}
 }

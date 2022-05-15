@@ -1,10 +1,13 @@
 {
   "name": "klimatyzacja-gui",
-  "version": "10.4.1",
+  "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "app/main.js",
   "private": true,
+  "author": "Karol, Musiał <karolmusial99@gmail.com>",
+  "email" : "karolmusial99@gmail.com",
+  "url" : "https://github.com/karol-musial/klimatyzacja-gui",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "ng": "ng",
@@ -36,7 +39,6 @@
     "primeng": "13.0.4",
     "rxjs": "7.4.0",
     "tslib": "^2.1.0",
-    "yarn": "1.22.18",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -54,7 +56,7 @@
     "@typescript-eslint/eslint-plugin": "5.4.0",
     "@typescript-eslint/parser": "5.4.0",
     "electron": "16.0.0",
-    "electron-builder": "22.13.1",
+    "electron-builder": "20.38.5",
     "electron-reload": "1.5.0",
     "eslint": "8.2.0",
     "eslint-plugin-import": "2.25.3",
