@@ -38,7 +38,7 @@
   [(visible)]="displayDialog"
   [modal]="true"
 >
-  <div class="p-col-12 p-ml-1 p-py-0">
+  <div class="p-col-12 p-py-0">
     <div class="form-group">
       <form class="form-horizontal" [formGroup]="form"  autocomplete="off">
         <div class="form-group">
@@ -48,14 +48,13 @@
             placeholder="Nazwa urządzenia"
             [(ngModel)]="newName"
             id="name"
-            class="form-control"
-            formControlName="name">
+            class="form-control">
         </div>
       </form>
     </div>
   </div>
   <ng-template pTemplate="footer">
-    <button pButton pRipple label="Zapisz" icon="pi pi-check" class="p-button-text"(click)="addDevice();"
+    <button pButton pRipple label="Zapisz" icon="pi pi-check" class="p-button-text" (click)="addDevice();"
             [disabled]="!form.valid" ></button>
   </ng-template>
 </p-dialog>

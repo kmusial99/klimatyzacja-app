@@ -27,7 +27,7 @@ export class DeviceComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.sub = this.activatedroute.paramMap.subscribe(params => {
       this.id = parseInt(params.get('id'));
-      const urzadzenia = this.urzadzenieService.getUrzadzenia();
+      const urzadzenia = this.urzadzenieService.getDevices();
       this.urzadzenie = urzadzenia.filter(order => (order.id === this.id))[0];
     });
     this.deviceToUpdate = new Urzadzenie(

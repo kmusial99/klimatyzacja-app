@@ -20,7 +20,7 @@ export class UrzadzenieService {
     this.newDate.setHours(this.newDate.getHours() + 1);
   }
 
-  public getUrzadzenia(): Urzadzenie[] {
+  public getDevices(): Urzadzenie[] {
     return this.urzadzenia;
   }
 
@@ -48,7 +48,7 @@ export class UrzadzenieService {
   public updateTemp(deviceId: number, zmiana: number): void {
     this.urzadzenia = this.urzadzenia.map(oldDevice => {
       if (oldDevice.id === deviceId) {
-        oldDevice.aktualnaTemperatura = oldDevice.aktualnaTemperatura + zmiana;
+        oldDevice.aktualnaTemperatura = Math.round((oldDevice.aktualnaTemperatura + zmiana) * 10) / 10;
         return oldDevice;
       }
       return oldDevice;

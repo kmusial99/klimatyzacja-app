@@ -2,11 +2,11 @@
   <div *ngFor="let urzadzenie of urzadzenia" style="margin-top: 3%;margin-left: 5%">
     <div class="p-d-flex">
       <p-toggleButton [(ngModel)]="urzadzenie.czyWlaczone"
-                      onLabel="On"
-                      offLabel="Off"
+                      onLabel="Włącz"
+                      offLabel="Wyłącz"
                       onIcon="pi pi-check"
                       offIcon="pi pi-times"
-                      [style]="{'width': '5em'}"
+                      [style]="{'width': '7em'}"
                       class="p-my-auto"
                       (click)="showTurnOnMessage(urzadzenie)"
                       (onChange)="onDeviceChange(urzadzenie)">
@@ -22,9 +22,9 @@
               [routerLink]="['/device', urzadzenie.id]"
               class="p-button-outlined p-button-lg p-ml-3">
         {{ urzadzenie.nazwa }}
-        <div *ngIf="urzadzenie.czyZaplanowaneWlaczenie">
+        <span *ngIf="urzadzenie.czyZaplanowaneWlaczenie">
           &nbsp;
-        </div>
+        </span>
         <i *ngIf="urzadzenie.czyZaplanowaneWlaczenie" class="pi pi-clock"></i>
       </button>
     </div>
