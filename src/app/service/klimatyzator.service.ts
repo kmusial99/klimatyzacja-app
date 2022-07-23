@@ -16,23 +16,25 @@ export class KlimatyzatorService {
   private urzadzenia: Urzadzenie[];
 
   constructor(private urzadzenieService: UrzadzenieService) {
-    this.changeRoomTemperature();
-  }
-
-  public changeRoomTemperature(): void {
-    this.urzadzenia = this.urzadzenieService.getUrzadzenia();
-    const source = interval(1000);
+    const source = interval(2000);
     source.subscribe(() => {
-      this.urzadzenia.forEach(urzadzenie => {
-        const tempZadana = urzadzenie.zadanaTemperatura;
-        const tempAktualna = urzadzenie.aktualnaTemperatura;
-        const zmianaTemperatury = this.calculate(tempZadana, tempAktualna, 0.01);
-        this.urzadzenieService.updateTemp(urzadzenie.id, zmianaTemperatury);
-      });
+      this.changeRoomTemperature();
     });
   }
 
-  public calculate(targetValue: number, currentValue: number, dt: number): number {
+  public changeRoomTemperature(): void {
+    this.urzadzenia = this.urzadzenieService.getDevices();
+    this.urzadzenia.forEach(urzadzenie => {
+      if (urzadzenie.czyWlaczone) {
+        const tempZadana = urzadzenie.zadanaTemperatura;
+        const tempAktualna = urzadzenie.aktualnaTemperatura;
+        const correction = this.calculateTemperature(tempZadana, tempAktualna, 0.01);
+        this.urzadzenieService.updateTemp(urzadzenie.id, correction);
+      }
+    });
+  }
+
+  public calculateTemperature(targetValue: number, currentValue: number, dt: number): number {
     var currentError = targetValue - currentValue;
     var P_correction = this.kp * currentError;
     this.cumulativError += Math.max(Math.min(currentError * dt, 1), -1);

@@ -1,11 +1,11 @@
 <h2 class="p-m-3" style="color: #9FA8DA">Szczegóły urządzenia</h2>
 <div class="p-grid p-fluid p-col-12">
   <p-toggleButton [(ngModel)]="deviceToUpdate.czyWlaczone"
-                  onLabel="On"
-                  offLabel="Off"
+                  onLabel="Włącz"
+                  offLabel="Wyłącz"
                   onIcon="pi pi-check"
                   offIcon="pi pi-times"
-                  [style]="{'width': '5em'}"
+                  [style]="{'width': '7em'}"
                   class="p-ml-3 p-my-auto"
                   (onChange)="this.deviceToUpdate.czyZaplanowaneWlaczenie = false">
   </p-toggleButton>

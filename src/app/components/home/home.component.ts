@@ -18,7 +18,7 @@ export class HomeComponent implements OnDestroy, OnInit {
 
   constructor(private router: Router,
               private urzadzenieService: UrzadzenieService) {
-    this.urzadzenia = this.urzadzenieService.getUrzadzenia();
+    this.urzadzenia = this.urzadzenieService.getDevices();
     const source = interval(1000);
     this.subscription = source.subscribe(() => {
       const time = new Date();
