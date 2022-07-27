@@ -22,7 +22,7 @@ export class KlimatyzatorService {
     });
   }
 
-  public changeRoomTemperature(): void {
+  private changeRoomTemperature(): void {
     this.urzadzenia = this.urzadzenieService.getDevices();
     this.urzadzenia.forEach(urzadzenie => {
       if (urzadzenie.czyWlaczone) {
@@ -34,7 +34,7 @@ export class KlimatyzatorService {
     });
   }
 
-  public calculateTemperature(targetValue: number, currentValue: number, dt: number): number {
+  private calculateTemperature(targetValue: number, currentValue: number, dt: number): number {
     var currentError = targetValue - currentValue;
     var P_correction = this.kp * currentError;
     this.cumulativError += Math.max(Math.min(currentError * dt, 1), -1);

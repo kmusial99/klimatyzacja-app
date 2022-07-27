@@ -6,8 +6,8 @@
   "main": "app/main.js",
   "private": true,
   "author": "Karol, Musiał <karolmusial99@gmail.com>",
-  "email" : "karolmusial99@gmail.com",
-  "url" : "https://github.com/karol-musial/klimatyzacja-gui",
+  "email": "karolmusial99@gmail.com",
+  "url": "https://github.com/karol-musial/klimatyzacja-gui",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "ng": "ng",
@@ -22,7 +22,8 @@
     "electron:local": "npm run build:prod && electron .",
     "electron:build": "npm run build:prod && electron-builder build --publish=never",
     "lint": "ng lint",
-    "dist:linux": "electron-builder --platform=linux --arch=armhf"
+    "dist:linux": "npm run build && electron-builder",
+    "build-and-run-electron": "npm run build && electron ./dist/main.js"
   },
   "dependencies": {
     "@angular/cdk": "13.1.3",
@@ -76,11 +77,25 @@
   ],
   "build": {
     "appId": "klimatyzacja",
-    "linux": {
+    "directories":{
+      "buildResources":"src/assets/images",
+      "output":"release"
+    },
+    "files": [
+      "*.js",
+      "build",
+      "node_modules",
+      "dist"
+    ],
+    "win": {
       "target": [
-        "deb"
-      ],
-      "category": "Utility"
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
     }
   }
 }
