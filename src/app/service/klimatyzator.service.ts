@@ -11,8 +11,6 @@ export class KlimatyzatorService {
   Ti = 0.873;
   ki = (this.kp * 0.01) / this.Ti;
   cumulativError = 0;
-  maxCorrection = 0.5;
-  minCorrection = -0.5;
   private urzadzenia: Urzadzenie[];
 
   constructor(private urzadzenieService: UrzadzenieService) {
@@ -22,7 +20,7 @@ export class KlimatyzatorService {
     });
   }
 
-  public changeRoomTemperature(): void {
+  private changeRoomTemperature(): void {
     this.urzadzenia = this.urzadzenieService.getDevices();
     this.urzadzenia.forEach(urzadzenie => {
       if (urzadzenie.czyWlaczone) {
@@ -34,21 +32,11 @@ export class KlimatyzatorService {
     });
   }
 
-  public calculateTemperature(targetValue: number, currentValue: number, dt: number): number {
+  private calculateTemperature(targetValue: number, currentValue: number, dt: number): number {
     var currentError = targetValue - currentValue;
     var P_correction = this.kp * currentError;
-    this.cumulativError += Math.max(Math.min(currentError * dt, 1), -1);
+    this.cumulativError += currentError * dt;
     var I_correction = this.ki * this.cumulativError;
-    var correction = P_correction + I_correction;
-
-    if (correction > this.maxCorrection) {
-      correction = this.maxCorrection;
-    }
-    if (correction < this.minCorrection) {
-      correction = this.minCorrection;
-    }
-    return correction;
+    return P_correction + I_correction;
   }
-
-
 }

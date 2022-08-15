@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngFor="let urzadzenie of urzadzenia" style="margin-top: 3%;margin-left: 5%">
+  <div *ngFor="let urzadzenie of urzadzenia" style="margin-left: 5%">
     <div class="p-d-flex">
       <p-toggleButton [(ngModel)]="urzadzenie.czyWlaczone"
                       onLabel="Włącz"
@@ -18,15 +18,22 @@
           <span class="p-inputgroup-addon">°C</span>
         </div>
       </div>
-      <button pButton
-              [routerLink]="['/device', urzadzenie.id]"
-              class="p-button-outlined p-button-lg p-ml-3">
-        {{ urzadzenie.nazwa }}
-        <span *ngIf="urzadzenie.czyZaplanowaneWlaczenie">
+      <div
+        class="p-my-auto">
+        <button pButton
+                [routerLink]="['/device', urzadzenie.id]"
+                class="p-button-outlined p-button-lg p-ml-3">
+          {{ urzadzenie.nazwa }}
+          <span *ngIf="urzadzenie.czyZaplanowaneWlaczenie">
           &nbsp;
         </span>
-        <i *ngIf="urzadzenie.czyZaplanowaneWlaczenie" class="pi pi-clock"></i>
-      </button>
+          <i *ngIf="urzadzenie.czyZaplanowaneWlaczenie" class="pi pi-clock"></i>
+        </button>
+      </div>
+      <app-graph
+        class="p-ml-auto p-mr-5 p-pr-5"
+        [aktualnaTemperatura]="urzadzenie.aktualnaTemperatura"
+      ></app-graph>
     </div>
   </div>
   <h2 *ngIf="urzadzenia.length === 0" class="p-m-3" style="color: #9FA8DA">Nie dodano żadnych urządzeń.</h2>

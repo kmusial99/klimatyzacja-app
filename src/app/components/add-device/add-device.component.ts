@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Urzadzenie } from '../../models/urzadzenie';
 import { UrzadzenieService } from '../../service/urzadzenie.service';
 import { Message } from 'primeng/api';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-device',
@@ -10,44 +10,42 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddDeviceComponent implements OnInit {
 
-  public isLoading = false;
   public availableDevices: Urzadzenie[] = [];
   public messages: Message[];
   public selectedUrzadzenie: Urzadzenie;
   public displayDialog: boolean;
-  public newName: string;
   public form: FormGroup;
 
-  constructor(private urzadzenieService: UrzadzenieService,
-              private formBuilder: FormBuilder) {
+  get name(): any {
+    return this.form.get('name').value;
+  }
+
+  constructor(private urzadzenieService: UrzadzenieService) {
   }
 
   public ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      name: [null, Validators.required],
+    this.form = new FormGroup({
+      name: new FormControl(null, Validators.required)
     });
   }
 
   public onClick(): void {
-    this.isLoading = true;
     this.availableDevices = [];
     this.selectedUrzadzenie = null;
-    setTimeout(() => {
-      this.searchingNewDevices();
-      if (this.urzadzenieService.getAvailableDevices()?.length === 0) {
-        this.showNotFoundMessage();
-      }
-    }, 1000);
+    this.refreshRecords();
+    if (this.availableDevices?.length === 0) {
+      this.showNotFoundMessage();
+    }
   }
 
   public addDevice(): void {
-    this.selectedUrzadzenie.nazwa = this.newName;
+    this.selectedUrzadzenie.nazwa = this.name;
     this.urzadzenieService.addUrzadzenie(this.selectedUrzadzenie);
-    this.searchingNewDevices();
     this.displayDialog = false;
     this.showSuccessMessage();
     this.selectedUrzadzenie = null;
-    this.newName = null;
+    this.refreshRecords();
+    this.form.reset();
   }
 
   public showSuccessMessage(): void {
@@ -62,8 +60,7 @@ export class AddDeviceComponent implements OnInit {
     ];
   }
 
-  private searchingNewDevices(): void {
+  public refreshRecords(): void {
     this.availableDevices = this.urzadzenieService.getAvailableDevices();
-    this.isLoading = false;
   }
 }
