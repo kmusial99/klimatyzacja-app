@@ -25,7 +25,7 @@ function createWindow(): BrowserWindow {
   });
 
   if (serve) {
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
     win.setMenu(null);
     require('electron-reload')(__dirname, {
       electron: require(path.join(__dirname, '/../node_modules/electron'))
@@ -33,7 +33,7 @@ function createWindow(): BrowserWindow {
     win.loadURL('http://localhost:4200');
   } else {
     let pathIndex = './index.html';
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
     win.setMenu(null);
 
     if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
