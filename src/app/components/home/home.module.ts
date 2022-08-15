@@ -13,22 +13,25 @@ import { ButtonModule } from 'primeng/button';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessagesModule } from 'primeng/messages';
+import { GraphComponent } from '../graph/graph.component';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
-  declarations: [HomeComponent],
-    imports: [
-        CommonModule,
-        SharedModule,
-        HomeRoutingModule,
-        KnobModule,
-        SelectButtonModule,
-        CheckboxModule,
-        InputSwitchModule,
-        ButtonModule,
-        ToggleButtonModule,
-        InputTextModule,
-      MessagesModule
-    ]
+  declarations: [HomeComponent, GraphComponent],
+  imports: [
+    CommonModule,
+    SharedModule,
+    HomeRoutingModule,
+    KnobModule,
+    SelectButtonModule,
+    CheckboxModule,
+    InputSwitchModule,
+    ButtonModule,
+    ToggleButtonModule,
+    InputTextModule,
+    MessagesModule,
+    ChartModule
+  ]
 })
 export class HomeModule {
 }
