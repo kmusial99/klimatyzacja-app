@@ -17,6 +17,14 @@ export class AppComponent {
     private klimatyzatorService: KlimatyzatorService,
   ) {
     this.primengConfig.ripple = true;
+
+    setInterval(async () => {
+      console.log({
+        free: window.os_performance.freemem(),
+        total: window.os_performance.totalmem(),
+        cpu: await window.os_performance.getCPUUsage(),
+      });
+    }, 1000);
   }
 
   public showInfoDialog(): void {
