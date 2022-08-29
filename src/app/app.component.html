@@ -21,9 +21,29 @@ min-height: 472px">
   <div>
     <button pButton
             class="p-button-outlined p-button-lg p-mb-5"
+            (click)="showCPUUsageDialog()"
+            label="Zużycie zasobów"
+            style="width: 100%"
+    ></button>
+    <p-dialog header="Zużycie zasobów" [(visible)]="displayCpuUsageModal" [modal]="true" [style]="{width: '50vw'}"
+              [draggable]="false" [resizable]="false">
+      <p class="m-0">Wolna pamięć RAM: {{ freeMemoryInMB }} MB</p>
+      <p class="m-0">Pamięć całkowita RAM: {{ totalMemoryInMB }} MB</p>
+      <p class="m-0">Zużycie procesora: {{ cpuUsage }}%</p>
+      <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="displayCpuUsageModal=false" label="Zamknij"
+                  styleClass="p-button-text"></p-button>
+      </ng-template>
+    </p-dialog>
+  </div>
+
+  <div>
+    <button pButton
+            class="p-button-outlined p-button-lg p-mb-5"
             (click)="showInfoDialog()"
             icon="pi pi-info-circle"
             label="Dodatkowe informacje"
+            style="width: 100%"
     ></button>
     <p-dialog header="Dodatkowe informacje" [(visible)]="displayInfoModal" [modal]="true" [style]="{width: '50vw'}"
               [draggable]="false" [resizable]="false">
@@ -40,6 +60,7 @@ min-height: 472px">
             class="p-button-outlined p-button-lg"
             (click)="showContactDialog()"
             label="Skontaktuj się z nami"
+            style="width: 100%"
     ></button>
     <p-dialog header="Linkedin" [(visible)]="displayContactModal" [modal]="true" [style]="{width: '50vw'}"
               [draggable]="false" [resizable]="false">
