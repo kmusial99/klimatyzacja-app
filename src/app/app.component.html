@@ -4,7 +4,7 @@ background-repeat: repeat-x;
 background-attachment: fixed;
 background-position: bottom;
 height: auto;
-min-height: 472px">
+min-height: 100%">
 <header>
   <div class="p-grid p-px-0 p-mx-0 p-pt-0">
     <div class="p-col-6 p-px-0">
@@ -27,6 +27,7 @@ min-height: 472px">
     ></button>
     <p-dialog header="Zużycie zasobów" [(visible)]="displayCpuUsageModal" [modal]="true" [style]="{width: '50vw'}"
               [draggable]="false" [resizable]="false">
+      <p class="m-0">Zajęta pamięć RAM: {{ totalMemoryInMB - freeMemoryInMB }} MB</p>
       <p class="m-0">Wolna pamięć RAM: {{ freeMemoryInMB }} MB</p>
       <p class="m-0">Pamięć całkowita RAM: {{ totalMemoryInMB }} MB</p>
       <p class="m-0">Zużycie procesora: {{ cpuUsage }}%</p>

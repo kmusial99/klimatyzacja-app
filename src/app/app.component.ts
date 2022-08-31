@@ -12,6 +12,7 @@ export class AppComponent {
   public displayInfoModal: boolean;
   public displayContactModal: boolean;
   public displayCpuUsageModal: boolean;
+  public takenMemoryInMB: number;
   public freeMemoryInMB: number;
   public totalMemoryInMB: number;
   public cpuUsage: number;
@@ -26,6 +27,7 @@ export class AppComponent {
       this.freeMemoryInMB = Math.round(window.os_performance.freemem() * 100) / 100;
       this.totalMemoryInMB = Math.round(window.os_performance.totalmem() * 100) / 100;
       this.cpuUsage = Math.round(await window.os_performance.getCPUUsage() * 100) / 100;
+      this.takenMemoryInMB = Math.round(this.totalMemoryInMB - this.freeMemoryInMB);
     }, 1000);
   }
 
