@@ -7,14 +7,15 @@ import { UrzadzenieService } from './urzadzenie.service';
   providedIn: 'root'
 })
 export class KlimatyzatorService {
-  kp = 0.716;
-  Ti = 0.873;
-  ki = (this.kp * 0.01) / this.Ti;
+  kp = 0.4;
+  Ti = 10
+  dt = 0.2;
+  ki = (this.kp * this.dt) / this.Ti;
   cumulativError = 0;
   private urzadzenia: Urzadzenie[];
 
   constructor(private urzadzenieService: UrzadzenieService) {
-    const source = interval(2000);
+    const source = interval(5000);
     source.subscribe(() => {
       this.changeRoomTemperature();
     });
@@ -26,7 +27,7 @@ export class KlimatyzatorService {
       if (urzadzenie.czyWlaczone) {
         const tempZadana = urzadzenie.zadanaTemperatura;
         const tempAktualna = urzadzenie.aktualnaTemperatura;
-        const correction = this.calculateTemperature(tempZadana, tempAktualna, 0.01);
+        const correction = this.calculateTemperature(tempZadana, tempAktualna, this.dt);
         this.urzadzenieService.updateTemp(urzadzenie.id, correction);
       }
     });

@@ -11,7 +11,7 @@ export class GraphComponent {
 
   @Input()
   set aktualnaTemperatura(aktTemp: number) {
-    this.iteration = this.iteration + 2;
+    this.iteration = this.iteration + 5;
     this.aktTemp = aktTemp;
     this.aktTempBS.next(aktTemp);
     this.chart?.refresh();
