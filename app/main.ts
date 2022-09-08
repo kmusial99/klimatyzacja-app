@@ -17,8 +17,8 @@ function createWindow(): BrowserWindow {
     y: 0,
     width: 750,
     height: 500,
-    kiosk: true,
-    fullscreen: true,
+    // kiosk: true,
+    // fullscreen: true,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
@@ -74,3 +74,5 @@ try {
 
 } catch (e) {
 }
+
+
